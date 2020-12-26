@@ -1,2 +1,2 @@
 # FavoRes
-This app is my portfolio.  you can share your favorite restaurant with other people.
+This app is my portfolio.  You can share your favorite restaurant with other people.
