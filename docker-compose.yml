@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  https-portal:
+    image: steveltn/https-portal:1
+    container_name: https-portal
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - app
+    environment:
+      DOMAINS: '${SSL_DOMAIN}'
+      STAGE: '${SSL_STAGE}'
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/DockerFile
+    container_name: FavoRes_app
+    volumes:
+      - ./src:/var/www/html
+
+  db:
+    image: mysql:5.7
+    container_name: FavoRes_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOTPASS}
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD:  ${DATABASE_USER_PASS}
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - 3306:3306
