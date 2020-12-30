@@ -15,3 +15,7 @@ use App\Http\Controllers\FavoResController;
 */
 
 Route::get('/',[FavoResController::class,"index"]);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia\Inertia::render('Dashboard');
+})->name('dashboard');
