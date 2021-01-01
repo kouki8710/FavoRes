@@ -5,7 +5,6 @@
         <meta charset="utf-8">
     </head>
     <body>
-        
         <h1>Hello,world</h1>
         <form method="POST" action="/articles/{{$article->id}}">
             @csrf
