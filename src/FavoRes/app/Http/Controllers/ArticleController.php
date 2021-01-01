@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Star;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -16,10 +17,10 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // jsonのみ
+    // アクセス拒否
     public function index(Request $request)
     {
-        return Article::all();
+        
     }
 
     /**
@@ -32,7 +33,8 @@ class ArticleController extends Controller
     public function create(Request $request)
     {
         if (\Auth::check()){
-            return view("article.create");
+            $user = \Auth::user();
+            return Inertia::render("Post",["user"=>$user]);
         }else{
             return redirect("login");
         }
@@ -53,7 +55,7 @@ class ArticleController extends Controller
             $article->fill($request->input());
             $article->user = \Auth::id();
             $article->save();
-            return redirect("articles/".$article->id);
+            return ["status"=>"success","redirect"=>"/articles"."/".$article->id];
         }else{
             return redirect("login");
         }
@@ -68,11 +70,12 @@ class ArticleController extends Controller
     public function show(Request $request,$id)
     {
         $article = Article::find($id);
+        $user = \Auth::user();
         if (!$article)
         {
             abort(404);
         }
-        return $article;
+        return Inertia::render("Detail",["article"=>$article, "user"=>$user]);
     }
 
     /**
@@ -92,7 +95,8 @@ class ArticleController extends Controller
         {
             if (\Auth::id()==$article->user)
             {
-                return view("article.edit",compact("article"));
+                $user = \Auth::user();
+                return Inertia::render("Edit",["article"=>$article, "user"=>$user]);
             }else{
                 abort(403);
             }
@@ -121,7 +125,7 @@ class ArticleController extends Controller
             if (\Auth::id()==$article->user)
             {
                 $article->update($request->input());
-                return redirect("articles/".$article->id);
+                return ["status"=>"success","redirect"=>"/articles"."/".$article->id];
             }else{
                 abort(403);
             }
@@ -150,7 +154,7 @@ class ArticleController extends Controller
             if (\Auth::id()==$article->user)
             {
                 $article->delete();
-                return redirect("/");
+                return ["status"=>"success","redirect"=>"/"];
             }else{
                 abort(403);
             }

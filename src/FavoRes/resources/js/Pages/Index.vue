@@ -3,7 +3,8 @@
     <Header :user="user" />
     <section v-for="article in articles">
         <p>-------------------</p>
-        <h2>{{article.title}}</h2>
+        <p>ID : {{article.id}}</p>
+        <a :href="'/articles/'+article.id">{{article.title}}</a>
         <h3>{{article.content}}</h3>
         <p>{{article.address}}</p>
     </section>

@@ -17,7 +17,7 @@ use App\Http\Controllers\ArticleController;
 
 Route::get('/',[FavoResController::class,"index"]);
 
-Route::resource('articles', ArticleController::class, ["only" => ["index","create","store","show","edit","update","destroy"]]);
+Route::resource('articles', ArticleController::class, ["only" => ["create","store","show","edit","update","destroy"]]);
 
 Route::get('/welcome',function(){
     return view("welcome");
