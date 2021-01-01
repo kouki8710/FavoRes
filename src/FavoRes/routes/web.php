@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FavoResController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,13 @@ use App\Http\Controllers\FavoResController;
 
 Route::get('/',[FavoResController::class,"index"]);
 
+Route::resource('articles', ArticleController::class, ["only" => ["index","create","store","show","edit","update","destroy"]]);
+
 Route::get('/welcome',function(){
     return view("welcome");
 });
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
