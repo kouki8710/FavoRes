@@ -23,12 +23,6 @@ Route::resource('articles', ArticleController::class, ["only" => ["create","stor
 Route::resource('comments', CommentController::class, ["only" => ["store","show","update","destroy"]]); // showのIDはarticle
 Route::resource('stars', StarController::class, ["only" => ["store","show","update","destroy"]]); // showのIDはarticle
 
-Route::get('/welcome',function(){
-    return view("welcome");
-});
-
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard')->withViewData(["title"=>"FavoRes | Dashboard"]);
 })->name('dashboard');
