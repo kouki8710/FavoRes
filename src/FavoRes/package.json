@@ -25,5 +25,9 @@
         "tailwindcss": "^1.8.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "node-sass": "^5.0.0",
+        "sass-loader": "^10.1.0"
     }
 }

@@ -26,5 +26,5 @@ Route::get('/welcome',function(){
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
+    return Inertia\Inertia::render('Dashboard')->withViewData(["title"=>"FavoRes | Dashboard"]);
 })->name('dashboard');
