@@ -29,12 +29,13 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    // viewを返す
+    // viewを返す get
     public function create(Request $request)
     {
         if (\Auth::check()){
             $user = \Auth::user();
-            return Inertia::render("Post",["user"=>$user]);
+            return Inertia::render("Post",["user"=>$user])->with(["a"=>"a"])
+            ->withViewData(["title"=>"FavoRes | create"]);
         }else{
             return redirect("login");
         }
@@ -47,7 +48,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // 記事作成
+    // 記事作成 post
     public function store(Request $request)
     {
         if (\Auth::check()){
@@ -67,6 +68,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 詳細記事 get
     public function show(Request $request,$id)
     {
         $article = Article::find($id);
@@ -75,7 +77,8 @@ class ArticleController extends Controller
         {
             abort(404);
         }
-        return Inertia::render("Detail",["article"=>$article, "user"=>$user]);
+        return Inertia::render("Detail",["article"=>$article, "user"=>$user])
+        ->withViewData(["title"=>"FavoRes | " . $article->title]);
     }
 
     /**
@@ -84,6 +87,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 編集 get
     public function edit(Request $request,$id)
     {
         $article = Article::find($id);
@@ -96,7 +100,8 @@ class ArticleController extends Controller
             if (\Auth::id()==$article->user)
             {
                 $user = \Auth::user();
-                return Inertia::render("Edit",["article"=>$article, "user"=>$user]);
+                return Inertia::render("Edit",["article"=>$article, "user"=>$user])
+                ->withViewData(["title"=>"FavoRes | edit - " . $article->title]);
             }else{
                 abort(403);
             }
@@ -113,6 +118,8 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // 更新 put/patch
     public function update(Request $request, $id)
     {
         $article = Article::find($id);
@@ -141,6 +148,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 削除 delete
     public function destroy(Request $request,$id)
     {
         $article = Article::find($id);

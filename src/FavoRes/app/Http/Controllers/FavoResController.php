@@ -15,6 +15,7 @@ class FavoResController extends Controller
     {
         $articles = Article::select()->join("users","users.id","=","articles.id")->take(5)->get();
         $user = \Auth::user();
-        return Inertia::render("Index",["articles"=>$articles, "user"=>$user]);
+        return Inertia::render("Index",["articles"=>$articles, "user"=>$user])
+        ->withViewData(["title"=>"FavoRes | Home"]);
     }
 }
