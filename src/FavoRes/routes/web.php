@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FavoResController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\StarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,8 @@ use App\Http\Controllers\ArticleController;
 Route::get('/',[FavoResController::class,"index"]);
 
 Route::resource('articles', ArticleController::class, ["only" => ["create","store","show","edit","update","destroy"]]);
+Route::resource('comments', CommentController::class, ["only" => ["store","show","update","destroy"]]); // showのIDはarticle
+Route::resource('stars', StarController::class, ["only" => ["store","show","update","destroy"]]); // showのIDはarticle
 
 Route::get('/welcome',function(){
     return view("welcome");

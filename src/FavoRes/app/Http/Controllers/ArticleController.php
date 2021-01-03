@@ -159,7 +159,6 @@ class ArticleController extends Controller
         }else{
             return redirect("login");
         }
-        
     }
 
     /**
