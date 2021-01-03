@@ -45698,7 +45698,10 @@ var staticRenderFns = [
     return _c("li", { staticClass: "nav-list-item" }, [
       _c(
         "a",
-        { staticClass: "nav-list-item-login", attrs: { href: "login" } },
+        {
+          staticClass: "nav-list-item-login",
+          attrs: { href: "/articles/create" }
+        },
         [_vm._v("新規投稿")]
       )
     ])

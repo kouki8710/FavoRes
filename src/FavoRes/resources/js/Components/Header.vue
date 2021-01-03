@@ -6,7 +6,7 @@
         <li class="nav-list-item"><a href="register" class="nav-list-item-register">sign up</a></li>
     </ul>
     <ul class="nav-list" v-else>
-        <li class="nav-list-item"><a href="login" class="nav-list-item-login">新規投稿</a></li>
+        <li class="nav-list-item"><a href="/articles/create" class="nav-list-item-login">新規投稿</a></li>
         <li class="nav-list-item">{{user.name}}</li>
     </ul>
 </header>
