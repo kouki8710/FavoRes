@@ -1,5 +1,32 @@
 <?php
 
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class UuidServoceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        app()->bind("uuidFactory", UuidV4Factory::class);
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+}
+
 class UuidV4Factory
 {
     const PATTERN = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
