@@ -34,7 +34,7 @@ class ArticleController extends Controller
     {
         if (\Auth::check()){
             $user = \Auth::user();
-            return Inertia::render("Post",["user"=>$user])->with(["a"=>"a"])
+            return Inertia::render("Post",["user"=>$user])
             ->withViewData(["title"=>"FavoRes | create"]);
         }else{
             return redirect("login");
