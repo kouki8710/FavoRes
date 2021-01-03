@@ -14,6 +14,7 @@ class Article extends Model
         "title",
         "content",
         "address",
+        "image_path"
     ];
 
     public function user()

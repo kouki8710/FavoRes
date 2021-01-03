@@ -55,7 +55,18 @@ class ArticleController extends Controller
             $article = new Article();
             $article->fill($request->input());
             $article->user = \Auth::id();
+            $image = $request->file("image");
+            if ($image){
+                $uuidFactory = new UuidV4Factory();
+                $uuid = $uuidFactory::generate();
+                $extension = $image->getClientOriginalExtension();
+                $image->storeAs('public/articles/', $uuid . '.' . $extension);
+                $article->image_path = 'storage/articles/' . $uuid . '.' . $extension;
+            }
+
             $article->save();
+            
+            
             return ["status"=>"success","redirect"=>"/articles"."/".$article->id];
         }else{
             return redirect("login");
@@ -132,6 +143,15 @@ class ArticleController extends Controller
             if (\Auth::id()==$article->user)
             {
                 $article->update($request->input());
+                $image = $request->file("image");
+                if ($image){
+                    $uuidFactory = new UuidV4Factory();
+                    $uuid = $uuidFactory::generate();
+                    $extension = $image->getClientOriginalExtension();
+                    $image->storeAs('public/articles/', $uuid . '.' . $extension);
+                    $article->image_path = 'storage/articles/' . $uuid . '.' . $extension;
+                    $article->save();
+                }
                 return ["status"=>"success","redirect"=>"/articles"."/".$article->id];
             }else{
                 abort(403);
@@ -169,5 +189,30 @@ class ArticleController extends Controller
         }else{
             return redirect("login");
         }
+    }
+}
+
+class UuidV4Factory
+{
+    const PATTERN = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+
+    /**
+     * UUID 生成
+     * @return string
+     * @throws \Exception
+     */
+    public static function generate(): string
+    {
+        $chars = str_split(self::PATTERN);
+
+        foreach ($chars as $i => $char) {
+            if ($char === 'x') {
+                $chars[$i] = dechex(random_int(0, 15));
+            } elseif ($char === 'y') {
+                $chars[$i] = dechex(random_int(8, 11));
+            }
+        }
+
+        return implode('', $chars);
     }
 }

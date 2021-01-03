@@ -2,6 +2,7 @@
 <div>
     <Header :user="user" />
     <p>{{article}}</p>
+    <img :src="FixURL(article.image_path)">
     <Footer />
 </div>
 </template>
@@ -25,6 +26,13 @@ export default{
         return {
 
         };
+    },
+    methods : {
+        FixURL(url){
+            if (url[0]!='/'){
+                return "/" + url;
+            }
+        },
     },
     mounted() {
         console.log(this.article);
