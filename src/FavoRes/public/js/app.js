@@ -48911,9 +48911,9 @@ var render = function() {
         return _c("section", [
           _c("p", [_vm._v("-------------------")]),
           _vm._v(" "),
-          _c("p", [_vm._v("ID : " + _vm._s(article.id))]),
+          _c("p", [_vm._v("ID : " + _vm._s(article.article_id))]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "/articles/" + article.id } }, [
+          _c("a", { attrs: { href: "/articles/" + article.article_id } }, [
             _vm._v(_vm._s(article.title))
           ]),
           _vm._v(" "),

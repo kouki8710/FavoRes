@@ -13,7 +13,8 @@ class FavoResController extends Controller
 {
     public function index(Request $request)
     {
-        $articles = Article::select()->join("users","users.id","=","articles.id")->take(5)->get();
+        $articles = Article::select("*","articles.id as article_id")
+        ->join("users","articles.user","=","users.id")->take(20)->get();
         $user = \Auth::user();
         return Inertia::render("Index",["articles"=>$articles, "user"=>$user])
         ->withViewData(["title"=>"FavoRes | Home"]);
