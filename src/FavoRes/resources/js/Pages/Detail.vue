@@ -29,9 +29,7 @@ export default{
     },
     methods : {
         FixURL(url){
-            if (url[0]!='/'){
-                return "/" + url;
-            }
+            return url[0]!='/' ? "/" + url : url;
         },
     },
     mounted() {

@@ -3550,9 +3550,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     FixURL: function FixURL(url) {
-      if (url[0] != '/') {
-        return "/" + url;
-      }
+      return url[0] != '/' ? "/" + url : url;
     }
   },
   mounted: function mounted() {
