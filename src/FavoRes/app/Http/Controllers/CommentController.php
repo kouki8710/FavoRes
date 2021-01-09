@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Star;
 
 class CommentController extends Controller
 {
@@ -32,9 +36,21 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // requestにarticlc_idも追加
     public function store(Request $request)
     {
-        //
+        $article_id = $request->article_id ?? null;
+        $article = $article_id ? Article::find($article_id) : null;
+        if (\Auth::check() && $article){
+            $comment = new Comment();
+            $comment->fill($request->input());
+            $comment->user = \Auth::id();
+            $comment->article = $article->id;
+            $comment->save();
+            return ["status"=>"success","comment"=>$comment];
+        }else{
+            return ["status"=>"error"];
+        }
     }
 
     /**
@@ -45,7 +61,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +72,7 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +84,13 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        if ($comment && \Auth::id()==$comment->user){
+            $comment->update($request->input());
+            return ["status"=>"success"];
+        }else{
+            return ["status"=>"error"];
+        }
     }
 
     /**
@@ -79,6 +101,12 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        if ($comment && \Auth::id()==$comment->user){
+            $comment->delete();
+            return ["status"=>"success"];
+        }else{
+            return ["status"=>"error"];
+        }
     }
 }

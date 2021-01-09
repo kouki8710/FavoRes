@@ -29,6 +29,6 @@ class Article extends Model
 
     public function stars()
     {
-        return $this->hasMany("App\Models\Comment", "article");
+        return $this->hasMany("App\Models\Star", "article");
     }
 }

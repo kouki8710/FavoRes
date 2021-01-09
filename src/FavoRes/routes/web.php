@@ -20,8 +20,8 @@ use App\Http\Controllers\StarController;
 Route::get('/',[FavoResController::class,"index"]);
 
 Route::resource('articles', ArticleController::class, ["only" => ["create","store","show","edit","update","destroy"]]);
-Route::resource('comments', CommentController::class, ["only" => ["store","show","update","destroy"]]); // showのIDはarticle
-Route::resource('stars', StarController::class, ["only" => ["store","show","update","destroy"]]); // showのIDはarticle
+Route::resource('comments', CommentController::class, ["only" => ["store","update","destroy"]]);
+Route::resource('stars', StarController::class, ["only" => ["update","destroy"]]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard')->withViewData(["title"=>"FavoRes | Dashboard"]);

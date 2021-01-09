@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Star;
 
 class StarController extends Controller
 {
@@ -66,9 +70,26 @@ class StarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // idはarticleの
     public function update(Request $request, $id)
     {
-        //
+        $user = \Auth::user();
+        $article = Article::find($id);
+        if ($user && $article){
+            $star = Star::where("user","=",$user->id)->where("article","=",$article->id)->first();
+            if ($star){
+                $star->update($request->input());
+            }else{
+                $star = new Star();
+                $star->fill($request->input());
+                $star->user = $user->id;
+                $star->article = $article->id;
+                $star->save();
+            }
+            return ["status"=>"success", "star"=>$star];
+        }else{
+            return ["status"=>"error"];
+        }
     }
 
     /**
@@ -79,6 +100,7 @@ class StarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $star = Star::find($id);
+
     }
 }

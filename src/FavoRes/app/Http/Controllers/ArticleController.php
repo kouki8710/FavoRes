@@ -48,7 +48,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // 記事作成 post
+    // 記事作成 post 
     public function store(Request $request)
     {
         if (\Auth::check()){
@@ -63,11 +63,9 @@ class ArticleController extends Controller
                 $image->storeAs('public/articles/', $uuid . '.' . $extension);
                 $article->image_path = 'storage/articles/' . $uuid . '.' . $extension;
             }
-
             $article->save();
-            
-            
             return ["status"=>"success","redirect"=>"/articles"."/".$article->id];
+
         }else{
             return redirect("login");
         }
@@ -88,7 +86,18 @@ class ArticleController extends Controller
         {
             abort(404);
         }
-        return Inertia::render("Detail",["article"=>$article, "user"=>$user])
+        $comments = $article->comments()->get();
+        $stars = $article->stars()->get();
+        $selectedStar = null; 
+        if ($user){
+            foreach ($stars as $star){
+                if ($star->user==$user->id) {
+                    $selectedStar =  $star ;
+                }
+            }
+        }
+        return Inertia::render("Detail",["article"=>$article, "user"=>$user, "parent_comments"=>$comments,
+        "parent_stars"=>$stars, "parent_selectedStar"=>$selectedStar ])
         ->withViewData(["title"=>"FavoRes | " . $article->title]);
     }
 
