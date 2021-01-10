@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if (!\App\Models\User::all())
+        if (\App\Models\User::all()->count()==0)
         {
             \App\Models\User::factory(10)->create();
         }
