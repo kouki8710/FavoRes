@@ -2,12 +2,14 @@
 <header>
     <h1 class="header-title"><a href="/">FavoRes</a></h1>
     <ul class="nav-list"  v-if="user==null">
-        <li class="nav-list-item"><a href="login" class="nav-list-item-login">sign in</a></li>
-        <li class="nav-list-item"><a href="register" class="nav-list-item-register">sign up</a></li>
+        <li class="nav-list-item"><a href="/login" class="nav-list-item-login">sign in</a></li>
+        <li class="nav-list-item"><a href="/register" class="nav-list-item-register">sign up</a></li>
     </ul>
     <ul class="nav-list" v-else>
         <li class="nav-list-item"><a href="/articles/create" class="nav-list-item-login">新規投稿</a></li>
-        <li class="nav-list-item">{{user.name}}</li>
+        <li class="nav-list-item">
+        <a href="/dashboard"><img class="nav-list-item-image" :src="user.profile_photo_url"></a>
+        </li>
     </ul>
 </header>
 </template>
@@ -87,6 +89,13 @@ header{
                 &:hover{
                     opacity: 0.6;
                 }
+            }
+
+            .nav-list-item-image{
+                display: inline;
+                width: 4rem;
+                border-radius: 10rem;
+                margin: 0 3rem;
             }
         }
     }

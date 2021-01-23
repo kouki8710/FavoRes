@@ -1978,6 +1978,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3568,6 +3570,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4722,7 +4738,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-5d3fd218] {\n  height: 5rem;\n  background: #3AB7FF;\n}\nheader .header-title[data-v-5d3fd218] {\n  font-size: 3rem;\n  float: left;\n  margin: 0 0 0 3rem;\n  color: white;\n}\nheader .header-title a[data-v-5d3fd218] {\n  display: block;\n  height: 5rem;\n  line-height: 5rem;\n}\nheader .header-title a[data-v-5d3fd218]:hover {\n  opacity: 0.6;\n}\nheader .nav-list[data-v-5d3fd218] {\n  float: right;\n}\nheader .nav-list .nav-list-item[data-v-5d3fd218] {\n  display: inline-block;\n  font-size: 1.5rem;\n}\nheader .nav-list .nav-list-item .nav-list-item-login[data-v-5d3fd218] {\n  display: block;\n  background: #F2E7CA;\n  height: 3rem;\n  width: 10rem;\n  border-radius: 3rem;\n  text-align: center;\n  line-height: 3rem;\n  margin: 1rem 1rem 1rem 0rem;\n}\nheader .nav-list .nav-list-item .nav-list-item-login[data-v-5d3fd218]:hover {\n  opacity: 0.6;\n}\nheader .nav-list .nav-list-item .nav-list-item-register[data-v-5d3fd218] {\n  display: block;\n  background: #F2E7CA;\n  height: 3rem;\n  width: 10rem;\n  border-radius: 3rem;\n  text-align: center;\n  line-height: 3rem;\n  margin: 1rem 2rem 1rem 1rem;\n}\nheader .nav-list .nav-list-item .nav-list-item-register[data-v-5d3fd218]:hover {\n  opacity: 0.6;\n}\n", ""]);
+exports.push([module.i, "header[data-v-5d3fd218] {\n  height: 5rem;\n  background: #3AB7FF;\n}\nheader .header-title[data-v-5d3fd218] {\n  font-size: 3rem;\n  float: left;\n  margin: 0 0 0 3rem;\n  color: white;\n}\nheader .header-title a[data-v-5d3fd218] {\n  display: block;\n  height: 5rem;\n  line-height: 5rem;\n}\nheader .header-title a[data-v-5d3fd218]:hover {\n  opacity: 0.6;\n}\nheader .nav-list[data-v-5d3fd218] {\n  float: right;\n}\nheader .nav-list .nav-list-item[data-v-5d3fd218] {\n  display: inline-block;\n  font-size: 1.5rem;\n}\nheader .nav-list .nav-list-item .nav-list-item-login[data-v-5d3fd218] {\n  display: block;\n  background: #F2E7CA;\n  height: 3rem;\n  width: 10rem;\n  border-radius: 3rem;\n  text-align: center;\n  line-height: 3rem;\n  margin: 1rem 1rem 1rem 0rem;\n}\nheader .nav-list .nav-list-item .nav-list-item-login[data-v-5d3fd218]:hover {\n  opacity: 0.6;\n}\nheader .nav-list .nav-list-item .nav-list-item-register[data-v-5d3fd218] {\n  display: block;\n  background: #F2E7CA;\n  height: 3rem;\n  width: 10rem;\n  border-radius: 3rem;\n  text-align: center;\n  line-height: 3rem;\n  margin: 1rem 2rem 1rem 1rem;\n}\nheader .nav-list .nav-list-item .nav-list-item-register[data-v-5d3fd218]:hover {\n  opacity: 0.6;\n}\nheader .nav-list .nav-list-item .nav-list-item-image[data-v-5d3fd218] {\n  display: inline;\n  width: 4rem;\n  border-radius: 10rem;\n  margin: 0 3rem;\n}\n", ""]);
 
 // exports
 
@@ -4760,7 +4776,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h1[data-v-2cbb1eba] {\n  font-size: 3rem;\n}\n", ""]);
+exports.push([module.i, ".wrap[data-v-2cbb1eba] {\n  background: #F0F0F0;\n}\n.content[data-v-2cbb1eba] {\n  display: flex;\n  background: white;\n  margin: 3rem;\n}\n.content .img-wrap[data-v-2cbb1eba] {\n  width: 50%;\n}\n.content .img-wrap img[data-v-2cbb1eba] {\n  padding: 3rem 0;\n  margin: 0 auto;\n  width: 80%;\n  height: 40rem;\n}\n.content .text-wrap[data-v-2cbb1eba] {\n  width: 50%;\n  padding: 3rem;\n}\n.content .text-wrap h1[data-v-2cbb1eba] {\n  font-size: 3rem;\n}\n.content .text-wrap p[data-v-2cbb1eba] {\n  margin-top: 3rem;\n  font-size: 1.5rem;\n}\n.content .text-wrap .user-wrap[data-v-2cbb1eba] {\n  text-align: right;\n  margin-top: 5rem;\n}\n.content .text-wrap .user-wrap span[data-v-2cbb1eba] {\n  display: inline;\n  font-size: 1.5rem;\n}\n.content .text-wrap .user-wrap img[data-v-2cbb1eba] {\n  display: inline;\n  width: 4rem;\n  border-radius: 10rem;\n  margin-left: 3rem;\n}\n@media screen and (max-width: 480px) {\n.content[data-v-2cbb1eba] {\n    display: block;\n}\n.content .img-wrap[data-v-2cbb1eba] {\n    width: 100%;\n}\n.content .text-wrap[data-v-2cbb1eba] {\n    width: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -45869,7 +45885,12 @@ var render = function() {
           _vm._m(3),
           _vm._v(" "),
           _c("li", { staticClass: "nav-list-item" }, [
-            _vm._v(_vm._s(_vm.user.name))
+            _c("a", { attrs: { href: "/dashboard" } }, [
+              _c("img", {
+                staticClass: "nav-list-item-image",
+                attrs: { src: _vm.user.profile_photo_url }
+              })
+            ])
           ])
         ])
   ])
@@ -45890,7 +45911,7 @@ var staticRenderFns = [
     return _c("li", { staticClass: "nav-list-item" }, [
       _c(
         "a",
-        { staticClass: "nav-list-item-login", attrs: { href: "login" } },
+        { staticClass: "nav-list-item-login", attrs: { href: "/login" } },
         [_vm._v("sign in")]
       )
     ])
@@ -45902,7 +45923,7 @@ var staticRenderFns = [
     return _c("li", { staticClass: "nav-list-item" }, [
       _c(
         "a",
-        { staticClass: "nav-list-item-register", attrs: { href: "register" } },
+        { staticClass: "nav-list-item-register", attrs: { href: "/register" } },
         [_vm._v("sign up")]
       )
     ])
@@ -48958,12 +48979,27 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "wrap" },
     [
       _c("Header", { attrs: { user: _vm.user } }),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.article))]),
-      _vm._v(" "),
-      _c("img", { attrs: { src: _vm.FixURL(_vm.article.image_path) } }),
+      _c("div", { staticClass: "content" }, [
+        _c("div", { staticClass: "img-wrap" }, [
+          _c("img", { attrs: { src: _vm.FixURL(_vm.article.image_path) } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-wrap" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.article.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.article.content))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "user-wrap" }, [
+            _c("span", [_vm._v(_vm._s(_vm.user.name))]),
+            _vm._v(" "),
+            _c("img", { attrs: { src: _vm.user.profile_photo_url } })
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("h1", [_vm._v("コメント")]),
       _vm._v(" "),

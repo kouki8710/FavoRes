@@ -52,6 +52,11 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         if (\Auth::check()){
+            $request->validate([
+                "title" => ["required","max:255"],
+                "content" => ["required"],
+                "address" => ["max:255"],
+            ]);
             $article = new Article();
             $article->fill($request->input());
             $article->user = \Auth::id();
@@ -67,7 +72,7 @@ class ArticleController extends Controller
             return ["status"=>"success","redirect"=>"/articles"."/".$article->id];
 
         }else{
-            return redirect("login");
+            return ["status"=>"guest","redirect"=>"/login"];
         }
     }
 

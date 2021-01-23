@@ -1,8 +1,22 @@
 <template>
-<div>
+<div class="wrap">
     <Header :user="user" />
-    <p>{{article}}</p>
-    <img :src="FixURL(article.image_path)">
+
+    <div class="content">
+        <div class="img-wrap">
+            <img :src="FixURL(article.image_path)">
+        </div>
+        <div class="text-wrap">
+            <h1>{{article.title}}</h1>
+            <p>{{article.content}}</p>
+            <div class="user-wrap">
+                <span>{{user.name}}</span>
+                <img :src="user.profile_photo_url">
+            </div>
+        </div>
+    </div>
+    
+    
 
     <h1>コメント</h1>
     <div v-for="comment in comments">
@@ -142,7 +156,69 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-h1{
-    font-size: 3rem;
+.wrap{
+    background: #F0F0F0;
+}
+
+
+.content{
+    display: flex;
+    background: white;
+    margin: 3rem;
+
+    .img-wrap{
+        width: 50%;
+        img{
+            padding: 3rem 0;
+            margin: 0 auto;
+            width: 80%;
+            height: 40rem;
+        }
+    }
+
+    .text-wrap{
+        width: 50%;
+        padding: 3rem;
+
+        h1{
+            font-size: 3rem;
+        }
+
+        p{
+            margin-top: 3rem;
+            font-size: 1.5rem;
+        }
+
+        .user-wrap{
+    
+            text-align: right;
+            margin-top: 5rem;
+
+            span{
+                display: inline;
+                font-size: 1.5rem;
+            }
+
+            img{
+                display: inline;
+                width: 4rem;
+                border-radius: 10rem;
+                margin-left: 3rem;
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width:480px){
+    .content{
+        display: block;
+        .img-wrap{
+            width: 100%;
+        }
+        .text-wrap{
+            width: 100%;
+        }
+    }
 }
 </style>
