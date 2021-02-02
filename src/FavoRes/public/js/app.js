@@ -3596,6 +3596,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     "article": Object,
     "user": Object,
+    "article_user": Object,
     "parent_comments": Array,
     "parent_stars": Array,
     "parent_selectedStar": Object
@@ -48994,9 +48995,9 @@ var render = function() {
           _c("p", [_vm._v(_vm._s(_vm.article.content))]),
           _vm._v(" "),
           _c("div", { staticClass: "user-wrap" }, [
-            _c("span", [_vm._v(_vm._s(_vm.user.name))]),
+            _c("span", [_vm._v(_vm._s(_vm.article_user.name))]),
             _vm._v(" "),
-            _c("img", { attrs: { src: _vm.user.profile_photo_url } })
+            _c("img", { attrs: { src: _vm.article_user.profile_photo_url } })
           ])
         ])
       ]),

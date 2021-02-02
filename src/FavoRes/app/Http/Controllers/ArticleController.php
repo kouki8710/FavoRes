@@ -91,6 +91,7 @@ class ArticleController extends Controller
         {
             abort(404);
         }
+        $article_user = User::find($article->id);
         $comments = $article->comments()->get();
         $stars = $article->stars()->get();
         $selectedStar = null; 
@@ -102,7 +103,7 @@ class ArticleController extends Controller
             }
         }
         return Inertia::render("Detail",["article"=>$article, "user"=>$user, "parent_comments"=>$comments,
-        "parent_stars"=>$stars, "parent_selectedStar"=>$selectedStar ])
+        "parent_stars"=>$stars, "parent_selectedStar"=>$selectedStar, "article_user"=>$article_user ])
         ->withViewData(["title"=>"FavoRes | " . $article->title]);
     }
 

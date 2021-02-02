@@ -10,8 +10,8 @@
             <h1>{{article.title}}</h1>
             <p>{{article.content}}</p>
             <div class="user-wrap">
-                <span>{{user.name}}</span>
-                <img :src="user.profile_photo_url">
+                <span>{{article_user.name}}</span>
+                <img :src="article_user.profile_photo_url">
             </div>
         </div>
     </div>
@@ -61,6 +61,7 @@ export default{
     props : {
         "article" : Object,
         "user" : Object,
+        "article_user" : Object,
         "parent_comments" : Array,
         "parent_stars" : Array,
         "parent_selectedStar" : Object,
