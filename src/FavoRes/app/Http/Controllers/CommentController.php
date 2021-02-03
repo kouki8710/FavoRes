@@ -42,14 +42,21 @@ class CommentController extends Controller
         $article_id = $request->article_id ?? null;
         $article = $article_id ? Article::find($article_id) : null;
         if (\Auth::check() && $article){
+
+            //既にコメントをしているかチェック
+            if (Comment::where("user","=",\Auth::id())
+            ->where("article","=",$article_id)->get()->count()){
+                return ["status"=>"error","msg"=>"コメントは一回まで可能です。"];
+            }
+
             $comment = new Comment();
             $comment->fill($request->input());
             $comment->user = \Auth::id();
             $comment->article = $article->id;
             $comment->save();
-            return ["status"=>"success","comment"=>$comment];
+            return ["status"=>"success","comment"=>Comment::with("user")->find($comment->id)];
         }else{
-            return ["status"=>"error"];
+            return ["status"=>"error", "msg"=>"ログインをしてください。"];
         }
     }
 

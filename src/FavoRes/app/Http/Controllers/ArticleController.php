@@ -85,25 +85,18 @@ class ArticleController extends Controller
     // 詳細記事 get
     public function show(Request $request,$id)
     {
-        $article = Article::find($id);
+        $article = Article::with("user")->find($id);
         $user = \Auth::user();
         if (!$article)
         {
             abort(404);
         }
-        $article_user = User::find($article->id);
-        $comments = $article->comments()->get();
-        $stars = $article->stars()->get();
-        $selectedStar = null; 
-        if ($user){
-            foreach ($stars as $star){
-                if ($star->user==$user->id) {
-                    $selectedStar =  $star ;
-                }
-            }
-        }
+        $comments = $article->comments()->with("user")->get();
+        $selectedStar = $user ? $article->stars()->where("user","=",$user->id)->first() : null;
+        $star_ave = Star::all()->map(function ($star) {return (int)$star->num_star;})->average();
+
         return Inertia::render("Detail",["article"=>$article, "user"=>$user, "parent_comments"=>$comments,
-        "parent_stars"=>$stars, "parent_selectedStar"=>$selectedStar, "article_user"=>$article_user ])
+         "parent_selectedStar"=>$selectedStar, "parent_star_ave"=>$star_ave])
         ->withViewData(["title"=>"FavoRes | " . $article->title]);
     }
 

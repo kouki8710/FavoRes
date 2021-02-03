@@ -86,9 +86,10 @@ class StarController extends Controller
                 $star->article = $article->id;
                 $star->save();
             }
-            return ["status"=>"success", "star"=>$star];
+            $star_ave = Star::all()->map(function ($star) {return (int)$star->num_star;})->average();
+            return ["status"=>"success", "star"=>$star, "star_ave"=>$star_ave];
         }else{
-            return ["status"=>"error"];
+            return ["status"=>"error", "msg"=>"ログインをしてください。"];
         }
     }
 
@@ -100,7 +101,7 @@ class StarController extends Controller
      */
     public function destroy($id)
     {
-        $star = Star::find($id);
+        // $star = Star::find($id);
 
     }
 }
